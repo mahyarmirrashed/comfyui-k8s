@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: comfyui-ingress
+  namespace: comfyui
+spec:
+  ingressClassName: tailscale
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: comfyui-service
+                port:
+                  number: 8188
+  tls:
+    - hosts:
+        - comfyui.your-tailnet.ts.net
