@@ -20,6 +20,7 @@ spec:
           args:
             - --listen
             - 0.0.0.0
+            - --enable-manager
           env:
             - name: LD_LIBRARY_PATH
               value: "/usr/lib/x86_64-linux-gnu:$(LD_LIBRARY_PATH)"
