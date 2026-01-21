@@ -20,14 +20,17 @@ spec:
           args:
             - --listen
             - 0.0.0.0
+          env:
+            - name: LD_LIBRARY_PATH
+              value: "/usr/lib/x86_64-linux-gnu:$(LD_LIBRARY_PATH)"
           ports:
             - containerPort: 8188
-          volumeMounts:
-            - mountPath: /data
-              name: data
           resources:
             limits:
               nvidia.com/gpu: 1
+          volumeMounts:
+            - mountPath: /data
+              name: data
       volumes:
         - name: data
           persistentVolumeClaim:
